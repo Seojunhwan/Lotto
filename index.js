@@ -21,9 +21,12 @@ const paintNum = () => {
 };
 
 const createNum = () => {
-  const min = Math.ceil(1);
-  const max = Math.floor(45);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+  for (let i = randomNum.length; i < 6; i++) {
+    const min = Math.ceil(1);
+    const max = Math.floor(45);
+    const result = Math.floor(Math.random() * (max - min + 1)) + min;
+    randomNum.push(result);
+  }
 };
 
 const reset = () => {
@@ -35,9 +38,14 @@ const reset = () => {
 
 const handleClick = () => {
   reset();
-  for (let i = 0; i < 6; i++) {
-    randomNum.push(createNum());
+  createNum();
+  const result = [...new Set(randomNum)];
+  if (result.length != 6) {
+    reset();
+    createNum();
+    console.log("중복값이 있어 다시 추첨합니다.");
   }
+
   randomNum.sort((compareFuction = (a, b) => a - b));
   paintNum();
 };
