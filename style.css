@@ -62,6 +62,14 @@ button:focus {
   outline: none;
 }
 
+.yellow,
+.blue,
+.red,
+.black,
+.green {
+  box-shadow: 0px 1.5px 10px -6px black;
+}
+
 .yellow {
   background-color: #f6cd76;
 }

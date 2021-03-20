@@ -45,7 +45,6 @@ const handleClick = () => {
     createNum();
     console.log("중복값이 있어 다시 추첨합니다.");
   }
-
   randomNum.sort((compareFuction = (a, b) => a - b));
   paintNum();
 };
