@@ -30,21 +30,29 @@ const createNum = () => {
 };
 
 const reset = () => {
+  pass = true;
   randomNum = [];
   spans.forEach((span) => {
     span.classList.remove("yellow", "red", "blue", "black", "green");
   });
 };
 
+const validation = () => {
+  let result = [...new Set(randomNum)];
+  if (result.length === 6) {
+    return false;
+  } else if (result.length !== 6) {
+    return true;
+  }
+};
+
 const handleClick = () => {
   reset();
   createNum();
-  const result = [...new Set(randomNum)];
-  if (result.length != 6) {
+  do {
     reset();
     createNum();
-    console.log("중복값이 있어 다시 추첨합니다.");
-  }
+  } while (validation());
   randomNum.sort((compareFuction = (a, b) => a - b));
   paintNum();
 };
