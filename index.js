@@ -1,7 +1,7 @@
-let randomNum = [];
+const btn = document.querySelector("button");
+const spans = document.querySelectorAll("span");
 
-const btn = document.querySelector("button"),
-  spans = document.querySelectorAll("span");
+let randomNum = [];
 
 const paintNum = () => {
   for (let i = 0; i < spans.length; i++) {
@@ -39,16 +39,15 @@ const reset = () => {
 
 const validation = () => {
   let result = [...new Set(randomNum)];
-  if (result.length === 6) {
-    return false;
-  } else if (result.length !== 6) {
+  if (result.length !== 6) {
     return true;
+  } else if (result.length === 6) {
+    return false;
   }
 };
 
 const handleClick = () => {
   reset();
-  createNum();
   do {
     reset();
     createNum();
