@@ -7,9 +7,6 @@ const navBtn = document.querySelector(".navBtn");
 let randomNum = [];
 let drawNum = [];
 
-const btn = document.querySelector("button"),
-  spans = document.querySelectorAll("span");
-
 const paintNum = () => {
   for (let i = 0; i < spans.length; i++) {
     spans[i].innerText = randomNum[i];
