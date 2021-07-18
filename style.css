@@ -86,6 +86,51 @@ button:focus {
   background-color: #98e287;
 }
 
+#jsDrawNums {
+  padding: 30px 10px;
+  z-index: 9999;
+  position: absolute;
+  display: flex;
+  width: 25%;
+  height: 100%;
+  transition: all ease-in-out 0.3s;
+}
+
+#jsDrawNums ul {
+  width: 90%;
+  overflow: scroll;
+}
+
+#jsDrawNums li {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 15px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  border-radius: 10px;
+  transition: all ease-in-out 0.3s;
+}
+
+#jsDrawNums li:not(:first-child) {
+  margin-top: 20px;
+}
+
+#jsDrawNums li span {
+  width: 45px;
+  height: 45px;
+  font-size: 20px;
+}
+
+#jsDrawNums button {
+  align-self: center;
+  width: 10%;
+  margin-left: 20px;
+  height: 30%;
+}
+
+.hide {
+  transform: translateX(-90%);
+}
+
 @media (max-width: 600px) {
   .nums {
     width: 100%;
@@ -99,5 +144,25 @@ button:focus {
   }
   button {
     width: 80%;
+  }
+
+  .hide {
+    transform: translateY(-80%);
+  }
+  #jsDrawNums {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  #jsDrawNums ul {
+    background-color: white;
+    width: 100%;
+    height: 80%;
+  }
+
+  #jsDrawNums button {
+    margin-top: 10%;
+    width: 40%;
+    height: 5%;
   }
 }
