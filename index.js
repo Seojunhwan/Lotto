@@ -1,4 +1,11 @@
+const drawBtn = document.querySelector(".jsDrawBtn");
+const spans = document.querySelectorAll(".jsNum");
+const drawNums = document.getElementById("jsDrawNums");
+const draws = drawNums.querySelector("ul");
+const navBtn = document.querySelector(".navBtn");
+
 let randomNum = [];
+let drawNum = [];
 
 const btn = document.querySelector("button"),
   spans = document.querySelectorAll("span");
@@ -53,12 +60,49 @@ const handleClick = () => {
     reset();
     createNum();
   } while (validation());
-  randomNum.sort((compareFuction = (a, b) => a - b));
+  randomNum.sort((compareCondition = (a, b) => a - b));
+  drawNum.push(randomNum);
+  paintDrawNums();
   paintNum();
 };
 
+const paintDrawNums = () => {
+  const lastDrawNums = drawNum[drawNum.length - 1];
+  const item = document.createElement("li");
+  const items = document.createElement("ul");
+  lastDrawNums.forEach((num) => {
+    const number = document.createElement("span");
+    number.classList.add("jsDrawNum");
+    if (num <= 10) {
+      number.classList.add("yellow");
+    } else if (num <= 20) {
+      number.classList.add("blue");
+    } else if (num <= 30) {
+      number.classList.add("red");
+    } else if (num <= 40) {
+      number.classList.add("black");
+    } else {
+      number.classList.add("green");
+    }
+    number.innerText = num;
+    item.appendChild(number);
+  });
+  draws.appendChild(item);
+};
+
+const handleNavClick = () => {
+  if (drawNums.className === "hide") {
+    drawNums.className = "appear";
+    navBtn.innerText = "숨기기";
+  } else {
+    drawNums.className = "hide";
+    navBtn.innerText = "항목 보기";
+  }
+};
+
 const init = () => {
-  btn.addEventListener("click", handleClick);
+  drawBtn.addEventListener("click", handleClick);
+  navBtn.addEventListener("click", handleNavClick);
 };
 
 init();
